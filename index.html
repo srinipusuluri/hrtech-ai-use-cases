@@ -1,0 +1,1380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI in Human Resources (HRTech) - Comprehensive Use Cases</title>
+    <style>
+        :root {
+            --primary-color: #10b981;
+            --secondary-color: #06b6d4;
+            --accent-color: #8b5cf6;
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --border-color: #334155;
+            --hr-green: #10b981;
+            --people-blue: #06b6d4;
+            --culture-purple: #8b5cf6;
+            --talent-orange: #f59e0b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--bg-color), #0b1220);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, var(--hr-green), var(--people-blue), var(--culture-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 4s ease-in-out infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .nav-btn {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            border-color: var(--primary-color);
+        }
+
+        .nav-btn.active {
+            background: linear-gradient(45deg, var(--hr-green), var(--people-blue));
+            border: none;
+        }
+
+        .content-section {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            border-color: rgba(255,255,255,0.1);
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--hr-green), var(--people-blue), var(--culture-purple));
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .icon.ml { background: rgba(16, 185, 129, 0.2); color: var(--hr-green); }
+        .icon.gen { background: rgba(6, 182, 212, 0.2); color: var(--people-blue); }
+        .icon.ag { background: rgba(139, 92, 246, 0.2); color: var(--culture-purple); }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-subtitle {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-content {
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            background: linear-gradient(45deg, var(--hr-green), var(--people-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-tag {
+            background: rgba(255,255,255,0.1);
+            color: var(--text-secondary);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .architecture-diagram {
+            background: rgba(0,0,0,0.3);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1.5rem 0;
+            border: 1px solid var(--border-color);
+        }
+
+        .architecture-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 0.5rem;
+            padding: 0.5rem;
+            border-radius: 6px;
+            background: rgba(255,255,255,0.05);
+        }
+
+        .architecture-item::before {
+            content: '→';
+            color: var(--hr-green);
+            font-weight: bold;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(6, 182, 212, 0.1));
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .highlight-title {
+            color: var(--hr-green);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .metric-card {
+            background: rgba(255,255,255,0.05);
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .metric-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--hr-green);
+        }
+
+        .metric-label {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 2rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-secondary);
+        }
+
+        .hr-icon {
+            font-size: 2rem;
+            margin-right: 1rem;
+        }
+
+        .people-badge {
+            background: rgba(6, 182, 212, 0.2);
+            color: #06b6d4;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            margin-left: 0.5rem;
+        }
+
+        .culture-badge {
+            background: rgba(139, 92, 246, 0.2);
+            color: #8b5cf6;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            margin-left: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            .container { padding: 1rem; }
+            .card-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>👥 AI in Human Resources (HRTech)</h1>
+            <p class="subtitle">Comprehensive Guide to Machine Learning, Generative AI, and Agentic Systems in Talent Management & Workforce Optimization</p>
+        </header>
+
+        <div class="nav-container">
+            <button class="nav-btn active" onclick="showSection('ml')">🔮 ML / Predictive</button>
+            <button class="nav-btn" onclick="showSection('gen')">✍️ Generative AI</button>
+            <button class="nav-btn" onclick="showSection('agentic')">🤖 Agentic AI</button>
+        </div>
+
+        <!-- ML / Predictive Use Cases -->
+        <div id="ml" class="content-section active">
+            <h2 class="section-title">🔮 Machine Learning & Predictive Analytics</h2>
+            <p style="text-align: center; color: var(--text-secondary); margin-bottom: 3rem;">
+                Advanced statistical models and algorithms for talent management, workforce optimization, and employee experience
+            </p>
+
+            <div class="card-grid">
+                <!-- Attrition Prediction -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="icon ml">📉</div>
+                        <div>
+                            <div class="card-title">Attrition Prediction</div>
+                            <div class="card-subtitle">Retention Analytics</div>
+                        </div>
+                    </div>
+                    
+                    <div class="card-content">
+                        <p><strong>Objective:</strong> Predict employee turnover risk to enable proactive retention strategies and reduce talent loss.</p>
+                        
+                        <div class="tech-stack">
+                            <span class="tech-tag">Predictive Analytics</span>
+                            <span class="tech-tag">Employee Behavior</span>
+                            <span class="tech-tag">Retention Strategies</span>
+                            <span class="tech-tag">Risk Assessment</span>
+                            <span class="tech-tag">Workforce Planning</span>
+                        </div>
+
+                        <div class="architecture-diagram">
+                            <div class="architecture-item">Employee Data → Behavior Analysis → Risk Scoring → Intervention Planning → Retention → Monitoring</div>
+                            <div class="architecture-item">Performance Metrics → Engagement Data → Satisfaction Analysis → Turnover Prediction → Action</div>
+                        </div>
+
+                        <div class="highlight-box">
+                            <span class="highlight-title">Ground Data Strategy:</span>
+                            <ul>
+                                <li>Employee performance data</li>
+                                <li>Engagement survey results</li>
+                                <li>Compensation and benefits data</li>
+                                <li>Career progression history</li>
+                                <li>Work-life balance metrics</li>
+                                <li>Manager feedback and ratings</li>
+                            </ul>
+                        </div>
+
+                        <div class="metrics-grid">
+                            <div class="metric-card">
+                                <div class="metric-value">80-90%</div>
+                                <div class="metric-label">Prediction Accuracy</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">40-60%</div>
+                                <div class="metric-label">Retention Improvement</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">30-50%</div>
+                                <div class="metric-label">Turnover Reduction</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hiring Success Prediction -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="icon ml">🎯</div>
+                        <div>
+                            <div class="card-title">Hiring Success Prediction</div>
+                            <div class="card-subtitle">Talent Acquisition</div>
+                        </div>
+                    </div>
+                    
+                    <div class="card-content">
+                        <p><strong>Objective:</strong> Predict candidate success and cultural fit to optimize hiring decisions and reduce bad hires.</p>
+                        
+                        <div class="tech-stack">
+                            <span class="tech-tag">Candidate Assessment</span>
+                            <span class="tech-tag">Success Prediction</span>
+                            <span class="tech-tag">Cultural Fit</span>
+                            <span class="tech-tag">Hiring Optimization</span>
+                            <span class="tech-tag">Talent Matching</span>
+                        </div>
+
+                        <div class="architecture-diagram">
+                            <div class="architecture-item">Candidate Data → Skill Assessment → Cultural Analysis → Success Prediction → Hiring Decision → Onboarding</div>
+                            <div class="architecture-item">Resume Analysis → Interview Performance → Behavioral Assessment → Fit Scoring → Selection</div>
+                        </div>
+
+                        <div class="highlight-box">
+                            <span class="highlight-title">Ground Data Strategy:</span>
+                            <ul>
+                                <li>Candidate assessment data</li>
+                                <li>Historical hiring outcomes</li>
+                                <li>Employee performance data</li>
+                                <li>Cultural fit indicators</li>
+                                <li>Team dynamics data</li>
+                                <li>Role requirements</li>
+                            </ul>
+                        </div>
+
+                        <div class="metrics-grid">
+                            <div class="metric-card">
+                                <div class="metric-value">75-85%</div>
+                                <div class="metric-label">Hiring Success</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">50-70%</div>
+                                <div class="metric-label">Bad Hire Reduction</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">30-50%</div>
+                                <div class="metric-label">Time to Hire</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Performance Forecasting -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="icon ml">📈</div>
+                        <div>
+                            <div class="card-title">Performance Forecasting</div>
+                            <div class="card-subtitle">Talent Development</div>
+                        </div>
+                    </div>
+                    
+                    <div class="card-content">
+                        <p><strong>Objective:</strong> Predict employee performance trends and potential to inform development plans and succession planning.</p>
+                        
+                        <div class="tech-stack">
+                            <span class="tech-tag">Performance Analytics</span>
+                            <span class="tech-tag">Talent Development</span>
+                            <span class="tech-tag">Succession Planning</span>
+                            <span class="tech-tag">Skill Assessment</span>
+                            <span class="tech-tag">Growth Prediction</span>
+                        </div>
+
+                        <div class="architecture-diagram">
+                            <div class="architecture-item">Performance History → Skill Assessment → Growth Analysis → Forecasting → Development Planning → Monitoring</div>
+                            <div class="architecture-item">Current Performance → Learning Patterns → Potential Assessment → Career Path → Planning</div>
+                        </div>
+
+                        <div class="highlight-box">
+                            <span class="highlight-title">Ground Data Strategy:</span>
+                            <ul>
+                                <li>Historical performance data</li>
+                                <li>Skill assessment results</li>
+                                <li>Learning and development history</li>
+                                <li>Feedback and review data</li>
+                                <li>Goal achievement metrics</li>
+                                <li>Leadership potential indicators</li>
+                            </ul>
+                        </div>
+
+                        <div class="metrics-grid">
+                            <div class="metric-card">
+                                <div class="metric-value">80-90%</div>
+                                <div class="metric-label">Performance Prediction</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">60-80%</div>
+                                <div class="metric-label">Development Success</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">40-60%</div>
+                                <div class="metric-label">Succession Readiness</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Workforce Demand Forecasting -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="icon ml">📊</div>
+                        <div>
+                            <div class="card-title">Workforce Demand Forecasting</div>
+                            <div class="card-subtitle">Strategic Planning</div>
+                        </div>
+                    </div>
+                    
+                    <div class="card-content">
+                        <p><strong>Objective:</strong> Predict future workforce needs based on business growth, market trends, and strategic initiatives.</p>
+                        
+                        <div class="tech-stack">
+                            <span class="tech-tag">Workforce Planning</span>
+                            <span class="tech-tag">Demand Forecasting</span>
+                            <span class="tech-tag">Strategic Planning</span>
+                            <span class="tech-tag">Talent Acquisition</span>
+                            <span class="tech-tag">Business Alignment</span>
+                        </div>
+
+                        <div class="architecture-diagram">
+                            <div class="architecture-item">Business Strategy → Market Analysis → Demand Forecasting → Skills Gap Analysis → Recruitment Planning → Execution</div>
+                            <div class="architecture-item">Growth Projections → Role Requirements → Talent Needs → Acquisition Strategy → Implementation</div>
+                        </div>
+
+                        <div class="highlight-box">
+                            <span class="highlight-title">Ground Data Strategy:</span>
+                            <ul>
+                                <li>Business growth projections</li>
+                                <li>Market trend analysis</li>
+                                <li>Current workforce data</li>
+                                <li>Skill inventory</li>
+                                <li>Industry benchmarks</li>
+                                <li>Strategic initiative requirements</li>
+                            </ul>
+                        </div>
+
+                        <div class="metrics-grid">
+                            <div class="metric-card">
+                                <div class="metric-value">75-85%</div>
+                                <div class="metric-label">Forecast Accuracy</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">50-70%</div>
+                                <div class="metric-label">Planning Efficiency</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">40-60%</div>
+                                <div class="metric-label">Talent Gap Reduction</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Compensation Benchmarking -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="icon ml">💰</div>
+                        <div>
+                            <div class="card-title">Compensation Benchmarking</div>
+                            <div class="card-subtitle">Pay Equity</div>
+                        </div>
+                    </div>
+                    
+                    <div class="card-content">
+                        <p><strong>Objective:</strong> Analyze compensation data to ensure competitive and equitable pay structures across the organization.</p>
+                        
+                        <div class="tech-stack">
+                            <span class="tech-tag">Compensation Analysis</span>
+                            <span class="tech-tag">Market Benchmarking</span>
+                            <span class="tech-tag">Pay Equity</span>
+                            <span class="tech-tag">Competitive Analysis</span>
+                            <span class="tech-tag">Budget Optimization</span>
+                        </div>
+
+                        <div class="architecture-diagram">
+                            <div class="architecture-item">Internal Data → Market Analysis → Benchmarking → Equity Analysis → Adjustment Planning → Implementation</div>
+                            <div class="architecture-item">Role Analysis → Salary Data → Market Comparison → Equity Assessment → Optimization</div>
+                        </div>
+
+                        <div class="highlight-box">
+                            <span class="highlight-title">Ground Data Strategy:</span>
+                            <ul>
+                                <li>Internal compensation data</li>
+                                <li>Market salary benchmarks</li>
+                                <li>Role and responsibility data</li>
+                                <li>Performance and tenure data</li>
+                                <li>Industry compensation surveys</li>
+                                <li>Equity and diversity metrics</li>
+                            </ul>
+                        </div>
+
+                        <div class="metrics-grid">
+                            <div class="metric-card">
+                                <div class="metric-value">85-95%</div>
+                                <div class="metric-label">Benchmarking Accuracy</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">60-80%</div>
+                                <div class="metric-label">Pay Equity</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">30-50%</div>
+                                <div class="metric-label">Turnover Reduction</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Engagement Analytics -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="icon ml">❤️</div>
+                        <div>
+                            <div class="card-title">Engagement Analytics</div>
+                            <div class="card-subtitle">Employee Experience</div>
+                        </div>
+                    </div>
+                    
+                    <div class="card-content">
+                        <p><strong>Objective:</strong> Analyze employee engagement data to identify drivers of satisfaction and areas for improvement.</p>
+                        
+                        <div class="tech-stack">
+                            <span class="tech-tag">Engagement Analysis</span>
+                            <span class="tech-tag">Employee Experience</span>
+                            <span class="tech-tag">Satisfaction Drivers</span>
+                            <span class="tech-tag">Culture Assessment</span>
+                            <span class="tech-tag">Improvement Planning</span>
+                        </div>
+
+                        <div class="architecture-diagram">
+                            <div class="architecture-item">Survey Data → Sentiment Analysis → Driver Identification → Trend Analysis → Action Planning → Implementation</div>
+                            <div class="architecture-item">Feedback Collection → Analysis → Insights → Recommendations → Monitoring → Improvement</div>
+                        </div>
+
+                        <div class="highlight-box">
+                            <span class="highlight-title">Ground Data Strategy:</span>
+                            <ul>
+                                <li>Employee engagement surveys</li>
+                                <li>Feedback and suggestion data</li>
+                                <li>Work environment metrics</li>
+                                <li>Communication patterns</li>
+                                <li>Recognition and rewards data</li>
+                                <li>Work-life balance indicators</li>
+                            </ul>
+                        </div>
+
+                        <div class="metrics-grid">
+                            <div class="metric-card">
+                                <div class="metric-value">80-90%</div>
+                                <div class="metric-label">Engagement Accuracy</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">50-70%</div>
+                                <div class="metric-label">Satisfaction Improvement</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">40-60%</div>
+                                <div class="metric-label">Retention Improvement</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Generative AI Use Cases -->
+        <div id="gen" class="content-section">
+            <h2 class="section-title">✍️ Generative AI Applications</h2>
+            <p style="text-align: center; color: var(--text-secondary); margin-bottom: 3rem;">
+                AI-powered content creation, communication, and documentation for modern HR operations and employee experience
+            </p>
+
+            <div class="card-grid">
+                <!-- Job Description Drafting -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="icon gen">📝</div>
+                        <div>
+                            <div class="card-title">Job Description Drafting</div>
+                            <div class="card-subtitle">Talent Acquisition</div>
+                        </div>
+                    </div>
+                    
+                    <div class="card-content">
+                        <p><strong>Objective:</strong> Generate compelling and inclusive job descriptions that attract diverse, qualified candidates.</p>
+                        
+                        <div class="tech-stack">
+                            <span class="tech-tag">GPT-4/Claude</span>
+                            <span class="tech-tag">Job Description</span>
+                            <span class="tech-tag">Inclusive Language</span>
+                            <span class="tech-tag">Talent Attraction</span>
+                            <span class="tech-tag">Role Requirements</span>
+                        </div>
+
+                        <div class="architecture-diagram">
+                            <div class="architecture-item">Role Requirements → Market Analysis → Description Generation → Inclusive Review → Optimization → Publication</div>
+                            <div class="architecture-item">Skills Analysis → Responsibilities → Requirements → Benefits → Culture → Posting</div>
+                        </div>
+
+                        <div class="highlight-box">
+                            <span class="highlight-title">Ground Data Strategy:</span>
+                            <ul>
+                                <li>Role requirements and responsibilities</li>
+                                <li>Required skills and qualifications</li>
+                                <li>Company culture and values</li>
+                                <li>Industry standards</li>
+                                <li>Inclusive language guidelines</li>
+                                <li>Competitor job descriptions</li>
+                            </ul>
+                        </div>
+
+                        <div class="metrics-grid">
+                            <div class="metric-card">
+                                <div class="metric-value">90-95%</div>
+                                <div class="metric-label">Description Quality</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">70-85%</div>
+                                <div class="metric-label">Candidate Attraction</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">4-6 hours</div>
+                                <div class="metric-label">Description Generation</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Performance Feedback Drafting -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="icon gen">💬</div>
+                        <div>
+                            <div class="card-title">Performance Feedback</div>
+                            <div class="card-subtitle">Employee Development</div>
+                        </div>
+                    </div>
+                    
+                    <div class="card-content">
+                        <p><strong>Objective:</strong> Generate constructive and actionable performance feedback for employee reviews and development discussions.</p>
+                        
+                        <div class="tech-stack">
+                            <span class="tech-tag">GPT-4/Claude</span>
+                            <span class="tech-tag">Performance Review</span>
+                            <span class="tech-tag">Feedback Generation</span>
+                            <span class="tech-tag">Development Planning</span>
+                            <span class="tech-tag">Employee Growth</span>
+                        </div>
+
+                        <div class="architecture-diagram">
+                            <div class="architecture-item">Performance Data → Achievement Analysis → Feedback Generation → Development Planning → Review → Follow-up</div>
+                            <div class="architecture-item">Goal Assessment → Strengths Analysis → Improvement Areas → Action Plan → Monitoring</div>
+                        </div>
+
+                        <div class="highlight-box">
+                            <span class="highlight-title">Ground Data Strategy:</span>
+                            <ul>
+                                <li>Employee performance metrics</li>
+                                <li>Goal achievement data</li>
+                                <li>Feedback from peers and managers</li>
+                                <li>Development goals</li>
+                                <li>Strengths and improvement areas</li>
+                                <li>Company performance standards</li>
+                            </ul>
+                        </div>
+
+                        <div class="metrics-grid">
+                            <div class="metric-card">
+                                <div class="metric-value">90-95%</div>
+                                <div class="metric-label">Feedback Quality</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">80-90%</div>
+                                <div class="metric-label">Employee Satisfaction</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">5-10 minutes</div>
+                                <div class="metric-label">Feedback Generation</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Training Materials -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="icon gen">🎓</div>
+                        <div>
+                            <div class="card-title">Training Materials</div>
+                            <div class="card-subtitle">Learning & Development</div>
+                        </div>
+                    </div>
+                    
+                    <div class="card-content">
+                        <p><strong>Objective:</strong> Create comprehensive training materials and learning content for employee development and skill enhancement.</p>
+                        
+                        <div class="tech-stack">
+                            <span class="tech-tag">GPT-4/Claude</span>
+                            <span class="tech-tag">Training Content</span>
+                            <span class="tech-tag">Learning Materials</span>
+                            <span class="tech-tag">Skill Development</span>
+                            <span class="tech-tag">Employee Training</span>
+                        </div>
+
+                        <div class="architecture-diagram">
+                            <div class="architecture-item">Training Needs → Content Creation → Material Development → Review → Distribution → Assessment</div>
+                            <div class="architecture-item">Skill Requirements → Curriculum Design → Training Modules → Evaluation → Improvement</div>
+                        </div>
+
+                        <div class="highlight-box">
+                            <span class="highlight-title">Ground Data Strategy:</span>
+                            <ul>
+                                <li>Training needs assessment</li>
+                                <li>Skill competency frameworks</li>
+                                <li>Learning objectives</li>
+                                <li>Training delivery methods</li>
+                                <li>Assessment criteria</li>
+                                <li>Industry best practices</li>
+                            </ul>
+                        </div>
+
+                        <div class="metrics-grid">
+                            <div class="metric-card">
+                                <div class="metric-value">85-95%</div>
+                                <div class="metric-label">Training Quality</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">70-85%</div>
+                                <div class="metric-label">Skill Acquisition</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">6-8 hours</div>
+                                <div class="metric-label">Content Creation</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Onboarding Guides -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="icon gen">👋</div>
+                        <div>
+                            <div class="card-title">Onboarding Guides</div>
+                            <div class="card-subtitle">New Hire Experience</div>
+                        </div>
+                    </div>
+                    
+                    <div class="card-content">
+                        <p><strong>Objective:</strong> Generate comprehensive onboarding guides and welcome materials for new employee integration.</p>
+                        
+                        <div class="tech-stack">
+                            <span class="tech-tag">GPT-4/Claude</span>
+                            <span class="tech-tag">Onboarding Content</span>
+                            <span class="tech-tag">Employee Integration</span>
+                            <span class="tech-tag">Welcome Materials</span>
+                            <span class="tech-tag">Company Culture</span>
+                        </div>
+
+                        <div class="architecture-diagram">
+                            <div class="architecture-item">Role Information → Company Overview → Team Introduction → Process Training → Resource Access → Integration</div>
+                            <div class="architecture-item">Welcome Package → Orientation → Training → Mentorship → Feedback → Success</div>
+                        </div>
+
+                        <div class="highlight-box">
+                            <span class="highlight-title">Ground Data Strategy:</span>
+                            <ul>
+                                <li>Company culture and values</li>
+                                <li>Team structure and roles</li>
+                                <li>Onboarding processes</li>
+                                <li>Training requirements</li>
+                                <li>Resource access information</li>
+                                <li>Success metrics</li>
+                            </ul>
+                        </div>
+
+                        <div class="metrics-grid">
+                            <div class="metric-card">
+                                <div class="metric-value">90-95%</div>
+                                <div class="metric-label">Onboarding Quality</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">70-85%</div>
+                                <div class="metric-label">Employee Satisfaction</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">4-6 hours</div>
+                                <div class="metric-label">Guide Generation</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Employee Communication -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="icon gen">📢</div>
+                        <div>
+                            <div class="card-title">Employee Communication</div>
+                            <div class="card-subtitle">Internal Messaging</div>
+                        </div>
+                    </div>
+                    
+                    <div class="card-content">
+                        <p><strong>Objective:</strong> Generate clear and engaging internal communications for announcements, updates, and company news.</p>
+                        
+                        <div class="tech-stack">
+                            <span class="tech-tag">GPT-4/Claude</span>
+                            <span class="tech-tag">Internal Communication</span>
+                            <span class="tech-tag">Employee Engagement</span>
+                            <span class="tech-tag">Company News</span>
+                            <span class="tech-tag">Announcements</span>
+                        </div>
+
+                        <div class="architecture-diagram">
+                            <div class="architecture-item">Message Purpose → Audience Analysis → Content Creation → Review → Distribution → Feedback</div>
+                            <div class="architecture-item">Information Gathering → Message Drafting → Tone Adjustment → Approval → Communication</div>
+                        </div>
+
+                        <div class="highlight-box">
+                            <span class="highlight-title">Ground Data Strategy:</span>
+                            <ul>
+                                <li>Company communication guidelines</li>
+                                <li>Audience preferences</li>
+                                <li>Message objectives</li>
+                                <li>Communication channels</li>
+                                <li>Feedback mechanisms</li>
+                                <li>Company culture</li>
+                            </ul>
+                        </div>
+
+                        <div class="metrics-grid">
+                            <div class="metric-card">
+                                <div class="metric-value">90-95%</div>
+                                <div class="metric-label">Communication Quality</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">80-90%</div>
+                                <div class="metric-label">Employee Engagement</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">3-5 minutes</div>
+                                <div class="metric-label">Message Generation</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Benefits Explanation Documents -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="icon gen">📋</div>
+                        <div>
+                            <div class="card-title">Benefits Explanation</div>
+                            <div class="card-subtitle">Employee Benefits</div>
+                        </div>
+                    </div>
+                    
+                    <div class="card-content">
+                        <p><strong>Objective:</strong> Generate clear and comprehensive explanations of employee benefits and compensation packages.</p>
+                        
+                        <div class="tech-stack">
+                            <span class="tech-tag">GPT-4/Claude</span>
+                            <span class="tech-tag">Benefits Communication</span>
+                            <span class="tech-tag">Employee Education</span>
+                            <span class="tech-tag">Compensation Packages</span>
+                            <span class="tech-tag">HR Documentation</span>
+                        </div>
+
+                        <div class="architecture-diagram">
+                            <div class="architecture-item">Benefits Information → Explanation Generation → Clarity Review → Formatting → Distribution → Support</div>
+                            <div class="architecture-item">Policy Details → Employee Needs → Communication → Understanding → Enrollment → Support</div>
+                        </div>
+
+                        <div class="highlight-box">
+                            <span class="highlight-title">Ground Data Strategy:</span>
+                            <ul>
+                                <li>Benefits policy details</li>
+                                <li>Employee demographics</li>
+                                <li>Communication preferences</li>
+                                <li>Legal requirements</li>
+                                <li>Enrollment processes</li>
+                                <li>Support resources</li>
+                            </ul>
+                        </div>
+
+                        <div class="metrics-grid">
+                            <div class="metric-card">
+                                <div class="metric-value">90-95%</div>
+                                <div class="metric-label">Explanation Clarity</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">70-85%</div>
+                                <div class="metric-label">Employee Understanding</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">6-8 hours</div>
+                                <div class="metric-label">Document Generation</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Agentic AI Use Cases -->
+        <div id="agentic" class="content-section">
+            <h2 class="section-title">🤖 Agentic AI Systems</h2>
+            <p style="text-align: center; color: var(--text-secondary); margin-bottom: 3rem;">
+                Autonomous AI agents that can reason, plan, and execute complex HR operations and talent management workflows
+            </p>
+
+            <div class="card-grid">
+                <!-- Talent Acquisition Agent -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="icon ag">🎯</div>
+                        <div>
+                            <div class="card-title">Talent Acquisition</div>
+                            <div class="card-subtitle">Recruitment Automation</div>
+                        </div>
+                    </div>
+                    
+                    <div class="card-content">
+                        <p><strong>Objective:</strong> Automate and optimize the entire recruitment process from sourcing to offer negotiation and candidate onboarding.</p>
+                        
+                        <div class="tech-stack">
+                            <span class="tech-tag">Recruitment Automation</span>
+                            <span class="tech-tag">Candidate Sourcing</span>
+                            <span class="tech-tag">Interview Scheduling</span>
+                            <span class="tech-tag">Offer Management</span>
+                            <span class="tech-tag">Onboarding Coordination</span>
+                        </div>
+
+                        <div class="architecture-diagram">
+                            <div class="architecture-item">Job Requirements → Candidate Sourcing → Screening → Interview Coordination → Offer Management → Onboarding</div>
+                            <div class="architecture-item">Talent Pipeline → Assessment → Selection → Negotiation → Integration → Success</div>
+                        </div>
+
+                        <div class="highlight-box">
+                            <span class="highlight-title">Ground Data Strategy:</span>
+                            <ul>
+                                <li>Job requirements and specifications</li>
+                                <li>Candidate databases and profiles</li>
+                                <li>Assessment criteria</li>
+                                <li>Interview scheduling systems</li>
+                                <li>Offer negotiation protocols</li>
+                                <li>Onboarding workflows</li>
+                            </ul>
+                        </div>
+
+                        <div class="metrics-grid">
+                            <div class="metric-card">
+                                <div class="metric-value">80-90%</div>
+                                <div class="metric-label">Recruitment Efficiency</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">60-80%</div>
+                                <div class="metric-label">Time to Hire</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">70-90%</div>
+                                <div class="metric-label">Candidate Quality</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Workforce Planning Agent -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="icon ag">📊</div>
+                        <div>
+                            <div class="card-title">Workforce Planning</div>
+                            <div class="card-subtitle">Strategic HR</div>
+                        </div>
+                    </div>
+                    
+                    <div class="card-content">
+                        <p><strong>Objective:</strong> Analyze workforce data and business needs to optimize talent allocation, succession planning, and organizational design.</p>
+                        
+                        <div class="tech-stack">
+                            <span class="tech-tag">Workforce Analytics</span>
+                            <span class="tech-tag">Succession Planning</span>
+                            <span class="tech-tag">Talent Allocation</span>
+                            <span class="tech-tag">Organizational Design</span>
+                            <span class="tech-tag">Strategic Planning</span>
+                        </div>
+
+                        <div class="architecture-diagram">
+                            <div class="architecture-item">Business Strategy → Workforce Analysis → Gap Identification → Planning → Implementation → Monitoring</div>
+                            <div class="architecture-item">Current State → Future Needs → Talent Gaps → Development Plans → Execution → Review</div>
+                        </div>
+
+                        <div class="highlight-box">
+                            <span class="highlight-title">Ground Data Strategy:</span>
+                            <ul>
+                                <li>Business strategic plans</li>
+                                <li>Current workforce data</li>
+                                <li>Skills inventory</li>
+                                <li>Succession planning data</li>
+                                <li>Market labor trends</li>
+                                <li>Organizational structure</li>
+                            </ul>
+                        </div>
+
+                        <div class="metrics-grid">
+                            <div class="metric-card">
+                                <div class="metric-value">75-85%</div>
+                                <div class="metric-label">Planning Accuracy</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">60-80%</div>
+                                <div class="metric-label">Talent Alignment</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">50-70%</div>
+                                <div class="metric-label">Succession Readiness</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Onboarding Orchestration Agent -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="icon ag">👋</div>
+                        <div>
+                            <div class="card-title">Onboarding Orchestration</div>
+                            <div class="card-subtitle">New Hire Integration</div>
+                        </div>
+                    </div>
+                    
+                    <div class="card-content">
+                        <p><strong>Objective:</strong> Coordinate and personalize the entire onboarding experience for new hires including paperwork, training, and team integration.</p>
+                        
+                        <div class="tech-stack">
+                            <span class="tech-tag">Onboarding Automation</span>
+                            <span class="tech-tag">Personalization</span>
+                            <span class="tech-tag">Integration Coordination</span>
+                            <span class="tech-tag">Training Scheduling</span>
+                            <span class="tech-tag">Team Introduction</span>
+                        </div>
+
+                        <div class="architecture-diagram">
+                            <div class="architecture-item">New Hire Data → Personalization → Paperwork → Training → Team Integration → Success Monitoring</div>
+                            <div class="architecture-item">Welcome Process → Setup → Learning → Connection → Productivity → Retention</div>
+                        </div>
+
+                        <div class="highlight-box">
+                            <span class="highlight-title">Ground Data Strategy:</span>
+                            <ul>
+                                <li>New hire information</li>
+                                <li>Role-specific requirements</li>
+                                <li>Team structure</li>
+                                <li>Training programs</li>
+                                <li>Company policies</li>
+                                <li>Integration activities</li>
+                            </ul>
+                        </div>
+
+                        <div class="metrics-grid">
+                            <div class="metric-card">
+                                <div class="metric-value">85-95%</div>
+                                <div class="metric-label">Onboarding Success</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">70-90%</div>
+                                <div class="metric-label">Time to Productivity</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">60-80%</div>
+                                <div class="metric-label">Retention Improvement</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Performance Review Agent -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="icon ag">📈</div>
+                        <div>
+                            <div class="card-title">Performance Review</div>
+                            <div class="card-subtitle">Employee Assessment</div>
+                        </div>
+                    </div>
+                    
+                    <div class="card-content">
+                        <p><strong>Objective:</strong> Automate performance review processes including goal tracking, feedback collection, and development planning.</p>
+                        
+                        <div class="tech-stack">
+                            <span class="tech-tag">Performance Management</span>
+                            <span class="tech-tag">Goal Tracking</span>
+                            <span class="tech-tag">Feedback Collection</span>
+                            <span class="tech-tag">Development Planning</span>
+                            <span class="tech-tag">Review Automation</span>
+                        </div>
+
+                        <div class="architecture-diagram">
+                            <div class="architecture-item">Goal Setting → Progress Tracking → Feedback Collection → Review Generation → Development Planning → Follow-up</div>
+                            <div class="architecture-item">Performance Data → Analysis → Assessment → Planning → Implementation → Monitoring</div>
+                        </div>
+
+                        <div class="highlight-box">
+                            <span class="highlight-title">Ground Data Strategy:</span>
+                            <ul>
+                                <li>Employee goals and objectives</li>
+                                <li>Performance metrics</li>
+                                <li>Feedback from multiple sources</li>
+                                <li>Development needs</li>
+                                <li>Review timelines</li>
+                                <li>Improvement plans</li>
+                            </ul>
+                        </div>
+
+                        <div class="metrics-grid">
+                            <div class="metric-card">
+                                <div class="metric-value">80-90%</div>
+                                <div class="metric-label">Review Quality</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">70-85%</div>
+                                <div class="metric-label">Employee Satisfaction</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">60-80%</div>
+                                <div class="metric-label">Development Success</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Employee Support Agent -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="icon ag">🤝</div>
+                        <div>
+                            <div class="card-title">Employee Support</div>
+                            <div class="card-subtitle">HR Assistance</div>
+                        </div>
+                    </div>
+                    
+                    <div class="card-content">
+                        <p><strong>Objective:</strong> Provide 24/7 HR support and assistance for employee questions, policy guidance, and administrative tasks.</p>
+                        
+                        <div class="tech-stack">
+                            <span class="tech-tag">HR Support</span>
+                            <span class="tech-tag">Employee Assistance</span>
+                            <span class="tech-tag">Policy Guidance</span>
+                            <span class="tech-tag">Administrative Tasks</span>
+                            <span class="tech-tag">Self-service</span>
+                        </div>
+
+                        <div class="architecture-diagram">
+                            <div class="architecture-item">Employee Query → Knowledge Base → Response Generation → Escalation → Resolution → Feedback</div>
+                            <div class="architecture-item">Question Identification → Information Retrieval → Answer Generation → Support → Follow-up</div>
+                        </div>
+
+                        <div class="highlight-box">
+                            <span class="highlight-title">Ground Data Strategy:</span>
+                            <ul>
+                                <li>HR policy databases</li>
+                                <li>Employee handbook</li>
+                                <li>FAQ databases</li>
+                                <li>Benefits information</li>
+                                <li>Procedural guidelines</li>
+                                <li>Escalation protocols</li>
+                            </ul>
+                        </div>
+
+                        <div class="metrics-grid">
+                            <div class="metric-card">
+                                <div class="metric-value">85-95%</div>
+                                <div class="metric-label">Query Resolution</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">24/7</div>
+                                <div class="metric-label">Availability</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">3-5 seconds</div>
+                                <div class="metric-label">Response Time</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Learning Path Agent -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="icon ag">🎓</div>
+                        <div>
+                            <div class="card-title">Learning Path</div>
+                            <div class="card-subtitle">Career Development</div>
+                        </div>
+                    </div>
+                    
+                    <div class="card-content">
+                        <p><strong>Objective:</strong> Create personalized learning and development paths for employees based on career goals, skills gaps, and organizational needs.</p>
+                        
+                        <div class="tech-stack">
+                            <span class="tech-tag">Learning Paths</span>
+                            <span class="tech-tag">Career Development</span>
+                            <span class="tech-tag">Skills Assessment</span>
+                            <span class="tech-tag">Personalized Training</span>
+                            <span class="tech-tag">Development Planning</span>
+                        </div>
+
+                        <div class="architecture-diagram">
+                            <div class="architecture-item">Skills Assessment → Goal Identification → Path Creation → Content Curation → Progress Tracking → Adjustment</div>
+                            <div class="architecture-item">Employee Profile → Development Needs → Learning Plan → Implementation → Monitoring → Success</div>
+                        </div>
+
+                        <div class="highlight-box">
+                            <span class="highlight-title">Ground Data Strategy:</span>
+                            <ul>
+                                <li>Employee skills assessments</li>
+                                <li>Career aspirations</li>
+                                <li>Organizational skill needs</li>
+                                <li>Learning resources</li>
+                                <li>Development timelines</li>
+                                <li>Progress tracking</li>
+                            </ul>
+                        </div>
+
+                        <div class="metrics-grid">
+                            <div class="metric-card">
+                                <div class="metric-value">85-95%</div>
+                                <div class="metric-label">Path Relevance</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">70-90%</div>
+                                <div class="metric-label">Skill Development</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">60-80%</div>
+                                <div class="metric-label">Career Progression</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>✨ Built with cutting-edge AI technologies for the future of human resources and talent management</p>
+            <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-secondary);">
+                Note: Implementation requires careful consideration of privacy, bias mitigation, and employee rights
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show selected section
+            document.getElementById(sectionId).classList.add('active');
+            
+            // Update navigation buttons
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Find and activate the clicked button
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>
